@@ -8,6 +8,7 @@ Single-page website hosted on AWS.
 - **CloudFront**: `d16ye83agtsdjj.cloudfront.net` — CDN with HTTPS
 - **Route 53**: Hosted zone `Z053593131O2FX8W1E47U` — DNS for `igniteprestige.com` and `www.igniteprestige.com`
 - **ACM certificate**: `us-east-1` — covers `igniteprestige.com` and `*.igniteprestige.com`
+- **FormSubmit.co**: Contact form submissions are POSTed via AJAX to `https://formsubmit.co/ajax/igniteprestige@gmail.com` and forwarded as emails
 
 ## Deployment
 
