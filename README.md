@@ -1,17 +1,27 @@
 # Ignite Prestige
 
-```TXT
-To update your site in the future:
+Professional cleaning services website for model homes, spec homes, and commercial properties.
 
-  1. Upload changes to S3:
-  aws s3 cp index.html s3://igniteprestige.com/index.html
-  2. Invalidate the CloudFront cache so changes appear immediately:
-  aws cloudfront create-invalidation \
-      --distribution-id YOUR_DISTRIBUTION_ID \
-      --paths "/*"
+**Live site:** [igniteprestige.com](https://igniteprestige.com)
 
-  You can find your distribution ID with:
-  aws cloudfront list-distributions \
-      --query 'DistributionList.Items[?DomainName==`d16ye83agtsdjj.cloudfront.net`].Id' \
-      --output text
+## Features
+
+- Single-page responsive design
+- Service showcases for model home, spec home, and commercial cleaning
+- Contact form powered by [FormSubmit.co](https://formsubmit.co) — submissions are emailed to igniteprestige@gmail.com and sent via SMS to the owner
+- Mobile-friendly navigation
+
+## Architecture
+
+- **Hosting**: AWS S3 (`igniteprestige.com` bucket, `us-west-2`)
+- **CDN**: AWS CloudFront with HTTPS
+- **DNS**: AWS Route 53 — `igniteprestige.com` and `www.igniteprestige.com`
+- **Contact form**: FormSubmit.co AJAX endpoint
+
+## Deployment
+
+```bash
+./deploy.sh
 ```
+
+Uploads files to S3 and invalidates the CloudFront cache.
