@@ -38,7 +38,9 @@ aws s3 sync "$SCRIPT_DIR" "s3://$BUCKET_NAME" \
     --region "$REGION" \
     --exclude "deploy.sh" \
     --exclude ".DS_Store" \
-    --exclude "*.md"
+    --exclude "*.md" \
+    --exclude ".gitignore" \
+    --exclude ".git/*"
 
 echo "[2/3] Invalidating CloudFront cache..."
 DISTRIBUTION_ID=$(aws cloudfront list-distributions \
