@@ -433,6 +433,33 @@
             width: 100%;
         }
 
+        .contact-form .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: #f0fff4;
+            color: #276749;
+            border: 1px solid #c6f6d5;
+        }
+
+        .form-status.error {
+            display: block;
+            background: #fff5f5;
+            color: #c53030;
+            border: 1px solid #fed7d7;
+        }
+
         /* Footer */
         .footer {
             background: var(--primary);
@@ -636,6 +663,9 @@
                     </ul>
                 </div>
                 <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission — Ignite Prestige">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
@@ -662,6 +692,7 @@
                         <textarea id="message" name="message" placeholder="Tell us about your cleaning needs..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-status" id="form-status"></div>
                 </form>
             </div>
         </div>
@@ -682,8 +713,37 @@
 
         function handleSubmit(event) {
             event.preventDefault();
-            alert('Thank you for your message! We will get back to you shortly.');
-            event.target.reset();
+            var form = event.target;
+            var btn = form.querySelector('button[type="submit"]');
+            var status = document.getElementById('form-status');
+            var originalText = btn.textContent;
+
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            status.className = 'form-status';
+            status.style.display = 'none';
+
+            fetch('https://formsubmit.co/ajax/igniteprestige@gmail.com', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(function(response) {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(function() {
+                status.className = 'form-status success';
+                status.textContent = 'Thank you! Your message has been sent. We\'ll get back to you shortly.';
+                form.reset();
+            })
+            .catch(function() {
+                status.className = 'form-status error';
+                status.textContent = 'Something went wrong. Please try again or email us directly at igniteprestige@gmail.com.';
+            })
+            .finally(function() {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            });
         }
 
         // Close mobile menu when clicking a link
