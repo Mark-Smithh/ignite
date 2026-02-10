@@ -69,6 +69,18 @@
             color: var(--accent);
         }
 
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slogan {
+            font-size: 0.7rem;
+            color: var(--text-red);
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
 
         .nav-links {
             display: flex;
@@ -533,7 +545,10 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">Ignite <span>Prestige</span></div>
+        <div class="logo-container">
+            <div class="logo">Ignite <span>Prestige</span></div>
+            <div class="slogan">Igniting Excellence in Every Detail</div>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
