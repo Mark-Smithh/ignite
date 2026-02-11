@@ -49,7 +49,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--white);
+            background: var(--primary);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -58,25 +58,20 @@
             z-index: 1000;
         }
 
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
         .logo-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 80px;
+            width: auto;
         }
 
         .slogan {
             font-size: 0.7rem;
-            color: var(--text-red);
+            color: var(--white);
             font-style: italic;
             letter-spacing: 0.5px;
         }
@@ -90,7 +85,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--white);
             font-weight: 500;
             transition: color 0.3s ease;
         }
@@ -109,7 +104,7 @@
         .mobile-menu span {
             width: 25px;
             height: 3px;
-            background: var(--primary);
+            background: var(--white);
             transition: 0.3s;
         }
 
@@ -160,12 +155,6 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        .hero-logo {
-            max-width: 280px;
-            height: auto;
-            margin-bottom: 2rem;
         }
 
         .btn {
@@ -511,7 +500,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--white);
+                background: var(--primary);
                 flex-direction: column;
                 padding: 1rem 2rem;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -546,7 +535,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo-container">
-            <div class="logo">Ignite <span>Prestige</span></div>
+            <img src="images/ignite_prestige.png" alt="Ignite Prestige" class="nav-logo">
             <div class="slogan">Igniting Excellence in Every Detail</div>
         </div>
         <ul class="nav-links">
@@ -565,7 +554,6 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <img src="images/ignite_prestige.png" alt="Ignite Prestige" class="hero-logo">
             <h1>Premium Cleaning Services for <span>Exceptional Spaces</span></h1>
             <p>Ignite Prestige delivers meticulous cleaning solutions for model homes, spec homes, and commercial properties. Experience the difference of true professional care.</p>
             <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
@@ -762,9 +750,9 @@
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.background = 'rgba(26, 54, 93, 0.98)';
             } else {
-                navbar.style.background = 'var(--white)';
+                navbar.style.background = 'var(--primary)';
             }
         });
     </script>
